@@ -1,4 +1,4 @@
 package com.study.backend.member.dto;
 
-public class MemberCreateRequest {
+public record MemberCreateRequest(String email, String password, String name) {
 }
