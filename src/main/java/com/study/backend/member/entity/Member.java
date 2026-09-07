@@ -10,7 +10,7 @@ public class Member {
     private String email;
     private String password;
     private String name;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
     public static Member create(
@@ -22,7 +22,7 @@ public class Member {
         member.email = email;
         member.password = password;
         member.name = name;
-        member.createAt = LocalDateTime.now();
+        member.createdAt = LocalDateTime.now();
         member.modifiedAt = LocalDateTime.now();
         return member;
     }

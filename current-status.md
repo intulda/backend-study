@@ -1,33 +1,32 @@
 # Current Status
 
 ## 최종 목표
-서비스 회사에서 경쟁할 수 있는 백엔드 개발자로 복귀한다.
+서비스 회사에서 경쟁할 수 있는 Java/Spring 백엔드 개발자로 복귀한다.
 
 ## 현재 프로젝트
 backend-study
 
-## 완료한 작업
-- Spring Boot 프로젝트 생성
-- Spring Web, Lombok 의존성 추가
-- 기본 패키지 구조 생성
-- Member, MemberCreateRequest, MemberController 초안 작성
+## 현재 단계
+Member 도메인 및 회원 생성 흐름 구현
 
-## 학습한 내용
-- @RestController와 @RequestBody의 역할 차이
-- record를 요청 DTO로 사용하는 이유
-- Builder는 필요성과 가독성을 기준으로 선택
-- Domain이 Request DTO에 의존하지 않도록 설계
+## 완료
+- Spring Boot 프로젝트 및 기본 패키지 구성
+- Member, MemberCreateRequest, MemberController 생성
+- POST /api/members 요청 처리
+- Member.create()를 통한 Member 생성
+- createdAt, modifiedAt 초기화
 
-## 현재 수정할 내용
-- Member에서 MemberCreateRequest로 변환하는 from 메서드 제거
-- createAt을 createdAt으로 변경
-- @EqualsAndHashCode 제거 검토
-- Member 생성 메서드 설계
-- Controller에 @RequestBody 추가
-- API 경로를 /api/members로 정리
+## 학습 / 설계 결정
+- Request DTO가 Domain에 의존하도록 하지 않는다.
+- Member 생성 책임을 Member 내부에 둔다.
+- 정적 팩토리 메서드로 생성 의도를 표현하고 생성 규칙을 한곳에서 관리한다.
+- 객체 상태 변경을 외부에 무분별하게 노출하지 않는다.
 
 ## 다음 작업
-Member 관련 코드 수정 후 코드 리뷰 요청
+- Member 생성 API의 책임 구조 검토
+- Service 계층 도입 여부 및 역할 학습
+- 회원 저장을 위한 Persistence 계층 설계
 
-## 컨디션
-B마트 적응 기간. 근무일에는 10~30분 분량으로 진행한다.
+## 재개 지점
+Member 생성 흐름까지 구현 완료.
+다음 작업 시작 전 현재 Controller → Member.create() 구조부터 다시 확인한다.
