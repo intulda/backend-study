@@ -1,5 +1,6 @@
 package com.study.backend.member.controller;
 
+import com.study.backend.member.dto.MemberFindResponse;
 import com.study.backend.member.entity.Member;
 import com.study.backend.member.service.CreateMemberCommand;
 import com.study.backend.member.dto.MemberCreateRequest;
@@ -7,10 +8,7 @@ import com.study.backend.member.dto.MemberCreateResponse;
 import com.study.backend.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/members")
@@ -20,6 +18,14 @@ public class MemberController {
 
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MemberFindResponse> findMember(@PathVariable Long id) {
+        Member member = memberService.findMember(id);
+
+        return ResponseEntity.ok().body(new MemberFindResponse(member.getId(), member.getEmail(), member.getName()));
+
     }
 
     @PostMapping
@@ -32,6 +38,6 @@ public class MemberController {
                 )
         );
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreateResponse(1L, response.getEmail(), response.getName()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreateResponse(response.getId(), response.getEmail(), response.getName()));
     }
 }

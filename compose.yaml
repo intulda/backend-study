@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18
+    container_name: backend-study-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: backend_study
+      POSTGRES_USER: study
+      POSTGRES_PASSWORD: study1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:

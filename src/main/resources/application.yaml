@@ -1,3 +1,16 @@
 spring:
   application:
     name: backend-study
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/backend_study
+    username: study
+    password: study1234
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
